@@ -1,6 +1,7 @@
 package page.objects;
 
 import driver.manager.DriverManager;
+import org.apache.commons.logging.Log;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
@@ -14,8 +15,11 @@ public class LoginPage {
     @FindBy(css = "#user_login")
     private WebElement loginField;
 
-    @FindBy(css = "user_pass")
+    @FindBy(css = "#user_pass")
     private WebElement passwordField;
+
+    @FindBy(css = "#signin-form_box_sub_1 > form > div:nth-of-type(2) > button")
+    private WebElement loginButton;
 
     public LoginPage() {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
@@ -29,11 +33,17 @@ public class LoginPage {
         return this;
     }
 
-    public LoginPage TypeIntPasswordField(String password) {
-        loginField.clear();
+    public LoginPage TypeIntoPasswordField(String password) {
+        passwordField.clear();
         logger.info("Cleared password field");
-        loginField.sendKeys(password);
+        passwordField.sendKeys(password);
         logger.info("Typed into Password Field {}", password);
         return this;
+    }
+
+    public AccountInfoPage ClickOnLoginButton() {
+        loginButton.click();
+        logger.info("Clicked on Login Button");
+        return new AccountInfoPage();
     }
 }
