@@ -2,9 +2,15 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="All Pet Store Tests">
 
-    <test name="Configuration test">
+    <test name="Positive login test">
         <classes>
-            <class name="tests.TestZero"/>
+            <class name="tests.PositiveLoginTests"/>
+        </classes>
+    </test>
+
+    <test name="Negative login test">
+        <classes>
+            <class name="tests.NegativeLoginTests"/>
         </classes>
     </test>
 

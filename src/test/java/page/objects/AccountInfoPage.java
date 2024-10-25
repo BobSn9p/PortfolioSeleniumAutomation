@@ -14,6 +14,9 @@ public class AccountInfoPage {
     @FindBy(css = "#content > h1 > span")
     private WebElement accountWelcomeHeadline;
 
+    @FindBy(css = "#return_sub_account_badlogin > h3")
+    private WebElement invalidLoginInfo;
+
     public AccountInfoPage() {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
@@ -23,5 +26,11 @@ public class AccountInfoPage {
         logger.info("Returning status of banner after login: {}", isDisplayed);
         return isDisplayed;
 
+    }
+
+    public boolean isAccountInvalidLoginInfoDisplayed() {
+        boolean isDisplayed = invalidLoginInfo.isDisplayed();
+        logger.info("Returning info after incorrect login: {}", isDisplayed);
+        return isDisplayed;
     }
 }

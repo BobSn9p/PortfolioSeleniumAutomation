@@ -9,21 +9,21 @@ import static navigation.ApplicationURLs.LOGIN_URL;
 import static org.testng.Assert.assertTrue;
 
 
-public class PositiveLoginTests extends TestBase {
+public class NegativeLoginTests extends TestBase {
 
     @Test
-    public void asUserLoginUsingValidLoginAndPassword() {
+    public void asUserTryToLogInWithIncorrectLoginAndPassword() {
         DriverUtils.navigateToPage(LOGIN_URL);
         LandingPage landingPage = new LandingPage();
         landingPage.clickOnAcceptCookiesButton();
 
         LoginPage loginPage = new LoginPage();
-        boolean isAccountWelcomeHeadlineDisplayed = loginPage
-                .TypeIntoUserNameField("Testing")
-                .TypeIntoPasswordField("123456")
+        boolean isAccountInvalidLoginInfoDisplayed = loginPage
+                .TypeIntoUserNameField("ABC")
+                .TypeIntoPasswordField("123")
                 .ClickOnLoginButton()
-                .isAccountWelcomeHeadlineDisplayed();
-        assertTrue(isAccountWelcomeHeadlineDisplayed);
+                .isAccountInvalidLoginInfoDisplayed();
+        assertTrue(isAccountInvalidLoginInfoDisplayed);
 
     }
 
