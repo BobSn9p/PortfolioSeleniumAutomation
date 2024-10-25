@@ -7,7 +7,7 @@ import page.objects.*;
 public class TestZero extends TestBase {
 
     @Test
-    public void asNotLoggedInUserIShallNotProceedToCheckout() {
+    public void zero() {
         LandingPage landingPage = new LandingPage();
         landingPage.clickOnAcceptCookiesButton();
 
