@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import waits.WaitForElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,9 @@ public class HelmetDetailPage {
 
     @FindBy(css = "#search > div > h3 > a")
     private WebElement helmetDetails;
+
+    @FindBy(css = "#alert")
+    private WebElement alert;
 
     public HelmetDetailPage() {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
@@ -51,6 +55,13 @@ public class HelmetDetailPage {
             logger.info(element.getText());
         }
         return helmetsSizeStringsList;
+    }
+
+    public boolean isChooseSizeAlertDisplayed() {
+        WaitForElement.waitUntilElementIsVisible(alert);
+        boolean isDisplayed = alert.isDisplayed();
+        logger.info("Returning info about not chosen size: {}", isDisplayed);
+        return isDisplayed;
     }
 
 
