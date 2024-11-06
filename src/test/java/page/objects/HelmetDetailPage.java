@@ -44,6 +44,7 @@ public class HelmetDetailPage {
         List<WebElement> helmetsSizeWebElements = size.findElements(By.cssSelector(".projector_sizes__item"));
 
         List<String> helmetsSizeStringsList = new ArrayList<>();
+        logger.info("Getting helmet sizes");
 
         for (WebElement element : helmetsSizeWebElements) {
             helmetsSizeStringsList.add(element.getText());

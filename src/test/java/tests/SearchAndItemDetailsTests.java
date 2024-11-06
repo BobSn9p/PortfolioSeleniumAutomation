@@ -1,16 +1,13 @@
 package tests;
 
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import page.objects.*;
-
-import java.util.List;
+import testData.TestData;
 
 import static org.testng.AssertJUnit.assertEquals;
 
 
-public class SearchForItemTests extends TestBase {
-    List<String> desiredHelmetSizes = List.of("XS", "S", "M", "L", "XL");
+public class SearchAndItemDetailsTests extends TestBase {
 
     @Test
     public void addItemToCartWithoutChosenSize() {
@@ -19,14 +16,12 @@ public class SearchForItemTests extends TestBase {
                 .clickOnAcceptCookiesButton()
                 .typeAndSearchInSearchBar("MT STINGER 2 SOLID MATT BLACK");
         String searchedProductName = landingPage.getProductNameAfterSearch();
-        assertEquals(searchedProductName, "Kask integralny MT STINGER 2 SOLID MATT BLACK czarny mat");
+        assertEquals(searchedProductName, TestData.HELMET_FULL_NAME_MT_STINGER_2_SOLID_MATT_BLACK);
 
         HelmetDetailPage helmetDetailPage = new HelmetDetailPage();
         helmetDetailPage.clickOnHelmetDetails();
 
-        assertEquals(helmetDetailPage.getHelmetSizes(), desiredHelmetSizes);
-
-
+        assertEquals(helmetDetailPage.getHelmetSizes(), TestData.SIZES_5);
 
     }
 
