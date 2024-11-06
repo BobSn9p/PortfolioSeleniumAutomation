@@ -1,9 +1,9 @@
 package tests;
 
 import driver.manager.DriverUtils;
-import org.apache.commons.logging.Log;
 import org.testng.annotations.Test;
 import page.objects.*;
+import testData.LoginTestData;
 
 import static navigation.ApplicationURLs.LOGIN_URL;
 import static org.testng.Assert.assertTrue;
@@ -19,8 +19,8 @@ public class PositiveLoginTests extends TestBase {
 
         LoginPage loginPage = new LoginPage();
         boolean isAccountWelcomeHeadlineDisplayed = loginPage
-                .TypeIntoUserNameField("Testing")
-                .TypeIntoPasswordField("123456")
+                .TypeIntoUserNameField(LoginTestData.VALID_LOGIN)
+                .TypeIntoPasswordField(LoginTestData.VALID_PASSWORD)
                 .ClickOnLoginButton()
                 .isAccountWelcomeHeadlineDisplayed();
         assertTrue(isAccountWelcomeHeadlineDisplayed);
