@@ -22,11 +22,21 @@ public class HelmetDetailPage {
     @FindBy(css = ".projector_sizes__sub")
     private WebElement size;
 
-    @FindBy(css = "#search > div > h3 > a")
-    private WebElement helmetDetails;
-
     @FindBy(css = "#alert")
     private WebElement alert;
+
+    @FindBy(css= "#projector_sizes_cont > div:nth-of-type(2) > a:first-of-type")
+    private WebElement firstSize;
+
+    @FindBy(css = "#menu_preloader_add")
+    private WebElement addedToCartModalInformation;
+
+    @FindBy(css = "#menu_preloader_add > h2 > span")
+    private WebElement addedToCartModalInformationHeadline;
+
+    @FindBy(css = "#menu_preloader_add > div > div > h3 > a")
+    private WebElement getAddedToCartModalInformationProductName;
+
 
     public HelmetDetailPage() {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
@@ -35,12 +45,6 @@ public class HelmetDetailPage {
     public HelmetDetailPage clickOnAddToCartButton() {
         addToCart.click();
         logger.info("Clicked on Add To Cart button");
-        return this;
-    }
-
-    public HelmetDetailPage clickOnHelmetDetails() {
-        helmetDetails.click();
-        logger.info("Clicked on helmet Details");
         return this;
     }
 
@@ -60,8 +64,33 @@ public class HelmetDetailPage {
     public boolean isChooseSizeAlertDisplayed() {
         WaitForElement.waitUntilElementIsVisible(alert);
         boolean isDisplayed = alert.isDisplayed();
-        logger.info("Returning info about not chosen size: {}", isDisplayed);
+        logger.info("Returning alert about not chosen size: {}", isDisplayed);
         return isDisplayed;
+    }
+
+    public String getSizeAlertText() {
+        String sizeAlertText = alert.getText();
+        logger.info("Returned warning message was: {}", sizeAlertText);
+        return sizeAlertText;
+    }
+
+    public HelmetDetailPage clickOnFirstSize() {
+        firstSize.click();
+        logger.info("Clicked on first size");
+        return this;
+    }
+
+    public boolean isAddedToCartModalDisplayed() {
+       WaitForElement.waitUntilElementIsVisible(addedToCartModalInformation);
+        boolean isDisplayed = addedToCartModalInformation.isDisplayed();
+        logger.info("Returning added to cart modal information: {}", isDisplayed);
+        return isDisplayed;
+    }
+
+    public String getAddedToCartModalHeadline() {
+        String addedToCartModalHeadline = addedToCartModalInformationHeadline.getText() + " " + getAddedToCartModalInformationProductName.getText();
+        logger.info("Modal headline and product name was: {}", addedToCartModalHeadline);
+        return addedToCartModalHeadline;
     }
 
 

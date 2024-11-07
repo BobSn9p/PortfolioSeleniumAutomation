@@ -14,9 +14,6 @@ public class NegativeLoginTests extends TestBase {
     @Test
     public void asUserTryToLogInWithIncorrectLoginAndPassword() {
         DriverUtils.navigateToPage(LOGIN_URL);
-        LandingPage landingPage = new LandingPage();
-        landingPage.clickOnAcceptCookiesButton();
-
         LoginPage loginPage = new LoginPage();
         boolean isAccountInvalidLoginInfoDisplayed = loginPage
                 .TypeIntoUserNameField(LoginTestData.INVALID_LOGIN)
