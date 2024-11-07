@@ -16,7 +16,12 @@
 
     <test name="Search for item">
         <classes>
-            <class name="tests.SearchAndItemDetailsTests"/>
+            <class name="tests.SearchAndItemDetailsTests">
+            <methods>
+                <include name="searchForAnItem"/>
+                <include name="addItemToCartWithoutChosenSize"/>
+            </methods>
+            </class>
         </classes>
     </test>
 

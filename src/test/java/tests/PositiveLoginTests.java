@@ -14,9 +14,6 @@ public class PositiveLoginTests extends TestBase {
     @Test
     public void asUserLoginUsingValidLoginAndPassword() {
         DriverUtils.navigateToPage(LOGIN_URL);
-        LandingPage landingPage = new LandingPage();
-        landingPage.clickOnAcceptCookiesButton();
-
         LoginPage loginPage = new LoginPage();
         boolean isAccountWelcomeHeadlineDisplayed = loginPage
                 .TypeIntoUserNameField(LoginTestData.VALID_LOGIN)
