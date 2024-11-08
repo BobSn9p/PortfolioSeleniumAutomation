@@ -37,6 +37,12 @@ public class HelmetDetailPage {
     @FindBy(css = "#menu_preloader_add > div > div > h3 > a")
     private WebElement getAddedToCartModalInformationProductName;
 
+    @FindBy(css = "#menu_preloader_add > div > div > div:nth-of-type(3) > a:nth-of-type(2)")
+    private WebElement proceedToCheckout;
+
+    @FindBy(css = "#projector_price_value")
+    private WebElement helmetPrice;
+
 
     public HelmetDetailPage() {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
@@ -93,6 +99,17 @@ public class HelmetDetailPage {
         return addedToCartModalHeadline;
     }
 
+    public CheckoutPage clickOnProceedToCheckoutButton() {
+        proceedToCheckout.click();
+        logger.info("Clicked od proceed to checkout");
+        return new CheckoutPage();
+    }
+
+    public String getHelmetPrice() {
+        String helmetActualPrice = helmetPrice.getText() + " brutto";
+        logger.info("Returned helmet actual price was: {}", helmetActualPrice);
+        return helmetActualPrice;
+    }
 
 
 
