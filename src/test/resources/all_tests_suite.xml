@@ -4,7 +4,7 @@
 
     <test name="Positive login test">
         <classes>
-            <class name="tests.PositiveLoginTests"/>
+            <class name="tests.PositiveLoginTest"/>
         </classes>
     </test>
 
@@ -17,10 +17,10 @@
     <test name="Search for item">
         <classes>
             <class name="tests.SearchAndItemDetailsTests">
-            <methods>
-                <include name="searchForAnItem"/>
-                <include name="addItemToCartWithoutChosenSize"/>
-            </methods>
+<!--            <methods>-->
+<!--                <include name="searchForAnItem"/>-->
+<!--                <include name="addItemToCartWithoutChosenSize"/>-->
+<!--            </methods>-->
             </class>
         </classes>
     </test>
