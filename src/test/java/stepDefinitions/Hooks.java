@@ -1,29 +1,28 @@
-package tests;
+package stepDefinitions;
 
-import configuration.ConfigurationProperties;
-import configuration.PropertiesLoader;
 import driver.manager.DriverManager;
 import driver.manager.DriverUtils;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import io.cucumber.java.Before;
+import io.cucumber.java.After;
+import configuration.ConfigurationProperties;
+import configuration.PropertiesLoader;
 import page.objects.LandingPage;
 
 import java.util.Properties;
 
 import static navigation.ApplicationURLs.APPLICATION_URL;
 
-public class TestBase {
+public class Hooks {
 
-    @BeforeClass
-    public void beforeClass() {
+    @Before(order = 1)
+    public void loadProperties() {
         PropertiesLoader propertiesLoader = new PropertiesLoader();
         Properties propertiesFromFile = propertiesLoader.getPropertiesFromFile("configuration.properties");
         ConfigurationProperties.setProperties(propertiesFromFile);
     }
 
-    @BeforeMethod
-    public void beforeTest() {
+    @Before(order = 2)
+    public void setUpDriver() {
         DriverManager.getWebDriver();
         DriverUtils.setInitialConfiguration();
         DriverUtils.navigateToPage(APPLICATION_URL);
@@ -31,9 +30,8 @@ public class TestBase {
         landingPage.clickOnAcceptCookiesButton();
     }
 
-    @AfterMethod
-    public void afterTest() {
+    @After
+    public void tearDownDriver() {
         DriverManager.disposeDriver();
     }
-
 }

@@ -36,6 +36,10 @@ public class LandingPage {
         logger.info("Cleared search bar field");
         searchBar.sendKeys(itemName);
         logger.info("Typed into search bar field{}", itemName);
+        return this;
+    }
+
+    public LandingPage clickOnSearchButton() {
         searchBar.sendKeys(Keys.ENTER);
         logger.info("Searched for chosen item");
         return this;
