@@ -1,7 +1,5 @@
 package driver.manager;
 
-import java.time.Duration;
-
 public class DriverUtils {
 
     public static void setInitialConfiguration() {
@@ -11,5 +9,4 @@ public class DriverUtils {
     public static void navigateToPage(String pageUrl) {
         DriverManager.getWebDriver().navigate().to(pageUrl);
     }
-
 }

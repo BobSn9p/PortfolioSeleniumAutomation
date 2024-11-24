@@ -7,25 +7,29 @@ import org.openqa.selenium.WebDriver;
 
 public class DriverManager {
 
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     private DriverManager() {
     }
 
     public static WebDriver getWebDriver() {
-
-        if (driver == null) {
-            driver = BrowserFactory.getBrowser(LocalWebDriverProperties.getLocalBrowser());
+        if (driver.get() == null) {
+            WebDriver newDriver = BrowserFactory.getBrowser(LocalWebDriverProperties.getLocalBrowser());
+            driver.set(newDriver);
         }
-
-        return driver;
+        return driver.get();
     }
 
     public static void disposeDriver() {
-        driver.close();
-        if (!LocalWebDriverProperties.getLocalBrowser().equals(BrowserType.FIREFOX)){
-            driver.quit();
+        if (driver.get() != null) {
+            try {
+                driver.get().close();
+                if (!LocalWebDriverProperties.getLocalBrowser().equals(BrowserType.FIREFOX)) {
+                    driver.get().quit();
+                }
+            } finally {
+                driver.remove();
+            }
         }
-        driver = null;
     }
 }
