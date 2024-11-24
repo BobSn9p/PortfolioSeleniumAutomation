@@ -9,7 +9,7 @@ Portfolio test automation project in Java and seleniumWebdriver containing:
 Still in the process of development and improvement
 
 PL:
-Projekt automatyzacji testów w Java and seleniumWebdriver zawierający:
+Projekt automatyzacji testów w Java oraz seleniumWebdriver zawierający:
 - TestNG
 - BDD cucumber 
 - Allure reports 
