@@ -1,4 +1,5 @@
 Feature: Search for item test
+  @smoke
   Scenario: User tries to search for an item
 
     Given user is on the landing page
