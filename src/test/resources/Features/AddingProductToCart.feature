@@ -5,6 +5,7 @@ Feature: Adding product to cart without chosen size
     When user tries to add item to cart without chosen size
     Then alert no chosen size is displayed
 
+    @smoke
   Scenario: User adds a product to cart with chosen size and proceed to checkout
 
     Given user is on the product details page

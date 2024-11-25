@@ -1,4 +1,5 @@
 Feature: Positive Login Tests
+  @smoke
   Scenario: User tries to log in with correct login and password
 
     Given user is on the login page
