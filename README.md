@@ -16,4 +16,4 @@ Projekt automatyzacji testów w Java oraz seleniumWebdriver zawierający:
 - Log4j logs
 - Parallel threads
 
-W trakcie rozwijania i udoskanalania
+W trakcie rozwijania i udoskonalania
